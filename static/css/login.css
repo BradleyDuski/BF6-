@@ -1,0 +1,42 @@
+body{
+    background-image: url("/static/images/b6.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    margin:0;
+}
+
+
+h1 {
+    color: white; /* text color */
+    -webkit-text-stroke: 1px black; /* stroke around text */
+}
+.login h1 {
+    color: white;
+
+    display:flex;
+    justify-content: center;
+margin-top: 27vh;
+font-weight: bolder;
+}
+
+.login form {
+    border: 1px solid #333;
+    border-radius: 6px;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 20px;
+ 
+}
+
+.login form label {
+    display: block;
+}
+
+.login form input {
+    display: block;
+    width: 100%;
+}

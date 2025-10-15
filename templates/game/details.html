@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Note Details
+{% endblock %}
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/details.css'%}">
+{% endblock %}
+
+
+{% block content %}
+    
+
+    <div class="skin">
+    <h1>Faction / {{ operator.faction }}</h1>
+    <h5>Skin: {{ operator.skin }}</h5>
+    <p>Camo- {{ operator.camo }}</p>
+    <p>Unlock Method- {{ operator.unlock }}</p>
+    <img src="{{operator.image.url}}">
+  
+</div>
+
+ 
+{% endblock %}

@@ -1,0 +1,19 @@
+main{
+    display:flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 15vh auto 0 auto;
+  align-items: center;
+  border: 1px solid black;     /* Adds a black border around the element */
+              /* Optional: adds space inside the border */
+ 
+    width:50%;  
+   padding: 10vh;
+   background-color: #dddddd;
+      /* Increases space between lines of text */
+}
+
+.signup{
+margin-bottom: 30px;
+
+}

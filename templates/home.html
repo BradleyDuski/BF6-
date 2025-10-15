@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Home page {% endblock %}
+
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<div class="side">
+<img class="main-img" src="{% static 'images/home.jpg'%}">
+<p class="hometxt"> This is a fan-made wiki for a ton of Battlefield 6 info! You can find operator skins, weapon breakdowns, and chat with fellow gamers about all things Battlfield 6.</p>
+</div>
+
+{% endblock %}

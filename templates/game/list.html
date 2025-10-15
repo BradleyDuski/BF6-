@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Operator
+{% endblock %}
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/list.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="game">
+<h1> Battlefield 6 Operators</h1>
+
+<div class="list">
+
+      <div class="skin-wrapper">
+    {% for record in operator_list %}
+  
+    <div class="skin">
+    <h1>Faction / {{ record.faction }}</h1>
+    <h5>Skin: {{ record.skin }}</h5>
+    <p>Camo- {{ record.camo }}</p>
+    <p> Unlock Method- {{ record.unlock }}</p>
+    <img src="{{record.image.url}}">
+    <a class="btn btn-sm btn-outline-primary" href="{% url 'operator_detail' record.id %}">View Details &rArr;</a>
+    </div>
+    
+    {% endfor %}
+</div>
+
+</div>
+</div>
+{% endblock %}

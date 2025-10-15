@@ -1,0 +1,44 @@
+
+
+
+
+.side {
+display:flex;
+justify-content: space-between;
+margin-top: 10vh;
+
+}
+
+.main-img{
+height: 65vh;
+width: 75vh;
+margin-left: 15vh;
+border: 3px solid black;
+}
+
+
+.hometxt{
+margin: 20vh;
+height: 15vh;
+border: 2px solid black;
+display:flex;
+align-items: center;
+justify-content: center;
+padding: 30px;
+font-size: larger;
+}
+
+@media screen and (max-width:767px){
+.side {
+    display:flex;
+    flex-direction: column;
+    
+}
+
+img {
+max-width: 300px;
+max-height: 300px;
+display: block;
+  margin: 0 auto;
+}
+}
