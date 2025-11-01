@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+<section class="contact-section center-column">
+
+<h1>Contact me</h1>
+<h2>Use the form below to say hi!</h2>
+
+
+<form method="post" class="center-column"> 
+
+{% csrf_token %}
+
+
+<div class="field">
+    <lable>Name</lable>
+    {{ form.name}}
+</div>
+
+<div class="field">
+    <lable>Email</lable>
+    {{ form.email}}
+</div>
+
+<div class="field">
+    <lable>Message</lable>
+    {{ form.message}}
+</div>
+
+<div class="field">
+    <button class="button-29">Send message</button>
+</div>
+
+
+</form>
+
+
+</section>
+
+{% endblock %}

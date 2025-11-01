@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Forum
+{% endblock %}
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/forum.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="forum-container">
+
+    <h1>Forum Posts</h1>
+    <a href="{% url 'post_create' %}" class="btn btn-success">+ New Post</a>
+
+    {% if post_list %}
+        {% for post in post_list %}
+        <div class="post-card">
+            <strong>{{ post.title }}</strong>
+            <p>{{ post.content }}</p>
+
+            <div class="post-meta">
+                Posted by {{ post.author }} on {{ post.created_at|date:"M d, Y H:i" }}
+            </div>
+
+            <p>Likes: {{ post.likes }}</p>
+
+            <div class="post-actions">
+                <form action="{% url 'like_post' post.pk %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-outline-primary">👍 Like</button>
+                </form>
+
+                <form action="{% url 'post_delete' post.pk %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-outline-danger"
+                            onclick="return confirm('Are you sure you want to delete this post?');">
+                        Delete
+                    </button>
+                </form>
+            </div>
+
+            <div class="replies">
+                <h4>Replies</h4>
+                {% if post.replies.all %}
+                    {% for reply in post.replies.all %}
+                    <div class="reply-card">
+                        <p>{{ reply.content }}</p>
+                        <small>Posted on {{ reply.created_at|date:"M d, Y H:i" }}</small>
+                         {% if user == reply.author or user.is_staff %}
+                        <form action="{% url 'delete_reply' reply.id %}" method="post" style="display:inline;">
+                             {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                         {% endif %}
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No replies yet.</p>
+                {% endif %}
+            </div>
+
+            <div class="reply-form">
+                <h5>Leave a Reply</h5>
+                <form action="{% url 'add_reply' post.pk %}" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Reply</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>No posts yet.</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

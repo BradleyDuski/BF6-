@@ -9,9 +9,17 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
 from pathlib import Path
+import environ
+import certifi
+import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+env = environ.Env()
+
+# Load the .env file
+env.read_env(os.path.join(BASE_DIR, '.env'))
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -130,5 +138,14 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-Login_URL = '/users/login'
+LOGIN_URL = '/users/login'
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = 'login'  # or use '/login/' if not using named URLs
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = env('SMTP_EMAIL')
+EMAIL_HOST_PASSWORD = env('SMTP_PASS')

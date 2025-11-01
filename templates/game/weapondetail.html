@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Note Details
+{% endblock %}
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/details.css'%}">
+{% endblock %}
+
+
+{% block content %}
+    
+
+    <div class="skin">
+    <h1>Type /  {{ weapon.type }}</h1>
+    <h5>Name: {{ weapon.name }}</h5>
+    <p>Characteristics- {{  weapon.characteristics }}</p>
+    <p>Description- {{ weapon.description }}</p>
+    <img src="{{weapon.image.url}}">
+  
+</div>
+
+ 
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+Reply
+{% endblock %}
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/reply.css'%}">
+{% endblock %}
+
+
+
+{% block content %}
+
+  <div class="reply-form">
+    <h2>Reply to Post</h2>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Reply</button>
+    </form>
+ 
+  </div>
+{% endblock %}

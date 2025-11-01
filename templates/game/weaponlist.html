@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Weapons
+{% endblock %}
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/weaponlist.css'%}">
+{% endblock %}
+
+{% block content %}
+<div class="game">
+  <div class="search"> 
+<h1 style="margin-left: 10px;"> Weapons</h1>
+<form method="GET" action="{% url 'post_list' %}">
+    <input type="text" name="q" placeholder="Search..." value="{{ request.GET.q }}">
+   <button type="submit" class="btn btn-dark">Search</button>
+</form>
+</div>
+<ul>
+    {% for post in posts %}
+        <li>{{ post.title }}</li>
+    {% empty %}
+       
+    {% endfor %}
+</ul>
+<div class="list">
+
+      <div class="skin-wrapper">
+        
+    {% for record in weapon_list %}
+  <div class="skin">
+    <h1>Type / {{ record.type }}</h1>
+    <h5>Name: {{ record.name }}</h5>
+    <p>Characteristics – {{ record.characteristics }}</p>
+    <p>Description – {{ record.description }}</p>
+    <img src="{{ record.image.url }}" alt="{{ record.name }}" style="width:auto">
+    
+   <div class= "whoa">
+    <a class="btn btn-sm btn-outline-primary" 
+       href="{% url 'weapon_detail' record.id %}">
+       View Details &rArr;
+    </a>
+</div>
+  </div>
+{% endfor %}
+
+
+</div>
+
+</div>
+</div>
+{% endblock %}

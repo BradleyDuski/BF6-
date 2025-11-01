@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Operator
+Operators
 {% endblock %}
 
 {% load static %}
@@ -10,8 +10,22 @@ Operator
 {% endblock %}
 
 {% block content %}
+
 <div class="game">
-<h1> Battlefield 6 Operators</h1>
+  <div class="search">
+<h1 style="margin-left: 10px;"> Operators</h1>
+<form method="GET" action="{% url 'post_list' %}">
+    <input type="text" name="q" placeholder="Search..." value="{{ request.GET.q }}">
+    <button type="submit" class="btn btn-dark">Search</button>
+</form>
+</div>
+<ul>
+    {% for post in posts %}
+        <li>{{ post.title }}</li>
+    {% empty %}
+     
+    {% endfor %}
+</ul>
 
 <div class="list">
 
@@ -23,8 +37,14 @@ Operator
     <h5>Skin: {{ record.skin }}</h5>
     <p>Camo- {{ record.camo }}</p>
     <p> Unlock Method- {{ record.unlock }}</p>
-    <img src="{{record.image.url}}">
+    {% if record.image %}
+      <img src="{{record.image.url}}">
+    {% else %}
+      <img src="">
+    {% endif %}
+    <div class="whoa">
     <a class="btn btn-sm btn-outline-primary" href="{% url 'operator_detail' record.id %}">View Details &rArr;</a>
+    </div>
     </div>
     
     {% endfor %}
