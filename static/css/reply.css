@@ -15,7 +15,10 @@ main{margin-top: 15vh;}
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-
+body{
+  color: white;
+  background-color: black;
+}
 
 .reply-form h2 {
   text-align: center;
