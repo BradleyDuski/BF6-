@@ -17,6 +17,16 @@ class OperatorList(ListView):
     model = Operator
     template_name = "game/list.html"
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query = self.request.GET.get("q")
+        if query:
+            queryset = queryset.filter(
+                Q(skin__icontains=query) | Q(faction__icontains=query)
+            )
+        return queryset
+
+
 class OperatorDetail(DetailView):
     model = Operator
     template_name = "game/details.html"

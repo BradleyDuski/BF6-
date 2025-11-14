@@ -1,6 +1,6 @@
 
 
-
+body {background-color: black;}
 
 .side {
 display:flex;
@@ -26,6 +26,7 @@ align-items: center;
 justify-content: center;
 padding: 30px;
 font-size: larger;
+background-color: white;
 }
 
 @media screen and (max-width:767px){
